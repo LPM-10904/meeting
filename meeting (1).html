@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>การประเมินผลการปฏิบัติราชการด้านสาธารณสุข 2569 | สสจ.บุรีรัมย์</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-deep: #071C3C;
+    --navy: #0B2C5E;
+    --blue: #1657A8;
+    --sky: #3E9EE0;
+    --sky-light: #8FCBF2;
+    --ice: #EAF4FC;
+    --gold: #C9A857;
+    --gold-soft: #E7D6A0;
+    --white: #FFFFFF;
+    --ink: #0C2140;
+    --ink-soft: rgba(255,255,255,0.78);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:'Sarabun', sans-serif;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(62,158,224,0.25), transparent 60%),
+      radial-gradient(1000px 700px at 110% 10%, rgba(201,168,87,0.12), transparent 55%),
+      linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 45%, #08213F 100%);
+    color:var(--ink);
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* ambient flowing lines evoking network / video conferencing signal */
+  .wave-field{
+    position:fixed; inset:0; z-index:0; opacity:0.35; pointer-events:none;
+  }
+  .wave-field svg{ width:100%; height:100%; }
+
+  .container{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 24px 80px;
+    position:relative;
+    z-index:1;
+  }
+
+  /* ===== HEADER / HERO ===== */
+  header.hero{
+    padding:56px 0 40px;
+    text-align:center;
+    color:var(--white);
+  }
+
+  .badge-row{
+    display:flex; align-items:center; justify-content:center; gap:14px;
+    margin-bottom:28px;
+  }
+  .emblem{
+    width:56px; height:56px; border-radius:50%;
+    background:conic-gradient(from 220deg, var(--gold-soft), var(--gold), var(--sky), var(--gold-soft));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 0 0 3px rgba(255,255,255,0.15), 0 12px 30px rgba(0,0,0,0.35);
+    flex-shrink:0;
+  }
+  .emblem::after{
+    content:"";
+    width:42px; height:42px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #123a72, #071c3c 75%);
+  }
+  .badge-text{
+    text-align:left;
+    font-family:'Prompt', sans-serif;
+    letter-spacing:0.12em;
+    font-size:12.5px;
+    color:var(--sky-light);
+    text-transform:uppercase;
+  }
+  .badge-text strong{
+    display:block;
+    color:var(--gold-soft);
+    font-size:13px;
+    letter-spacing:0.08em;
+  }
+
+  .eyebrow{
+    font-family:'Prompt', sans-serif;
+    font-size:14px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--sky-light);
+    margin-bottom:14px;
+  }
+
+  h1{
+    font-family:'Prompt', sans-serif;
+    font-weight:700;
+    font-size:clamp(26px, 4.4vw, 40px);
+    line-height:1.35;
+    color:var(--white);
+    max-width:760px;
+    margin:0 auto 10px;
+  }
+  h1 .accent{
+    background:linear-gradient(90deg, var(--gold-soft), var(--sky-light));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .subtitle{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:600px;
+    margin:0 auto;
+    line-height:1.8;
+  }
+  .subtitle b{ color:var(--white); font-weight:600; }
+
+  .meta-row{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:12px;
+    margin-top:26px;
+  }
+  .meta-chip{
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18);
+    backdrop-filter:blur(6px);
+    padding:9px 16px;
+    border-radius:100px;
+    font-size:14px;
+    color:var(--white);
+  }
+  .meta-chip svg{ width:16px; height:16px; flex-shrink:0; }
+
+  /* ===== JOIN CARD ===== */
+  .join-card{
+    background:linear-gradient(155deg, #FFFFFF 0%, #F3F8FD 100%);
+    border-radius:24px;
+    padding:40px 36px;
+    margin-top:20px;
+    box-shadow:0 30px 60px -20px rgba(3,15,40,0.55), 0 0 0 1px rgba(255,255,255,0.06);
+    position:relative;
+    overflow:hidden;
+  }
+  .join-card::before{
+    content:"";
+    position:absolute; top:-60px; right:-60px;
+    width:220px; height:220px; border-radius:50%;
+    background:radial-gradient(circle, rgba(62,158,224,0.25), transparent 70%);
+  }
+  .join-card::after{
+    content:"";
+    position:absolute; bottom:0; left:0; right:0; height:6px;
+    background:linear-gradient(90deg, var(--gold), var(--sky) 45%, var(--blue) 100%);
+  }
+
+  .join-head{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    margin-bottom:26px; flex-wrap:wrap;
+    position:relative; z-index:1;
+  }
+  .join-head h2{
+    font-family:'Prompt', sans-serif;
+    font-size:20px;
+    font-weight:600;
+    color:var(--navy-deep);
+    display:flex; align-items:center; gap:10px;
+  }
+  .zoom-mark{
+    width:34px; height:34px; border-radius:9px;
+    background:linear-gradient(135deg, var(--blue), var(--sky));
+    display:flex; align-items:center; justify-content:center;
+    color:white; font-family:'Prompt',sans-serif; font-weight:700; font-size:15px;
+  }
+  .live-dot{
+    display:inline-flex; align-items:center; gap:7px;
+    font-size:12.5px; font-weight:600; color:#1D8A4E;
+    background:#E5F6EC; padding:6px 12px; border-radius:100px;
+    font-family:'Prompt', sans-serif;
+  }
+  .live-dot span{
+    width:7px; height:7px; border-radius:50%; background:#1D8A4E;
+    box-shadow:0 0 0 0 rgba(29,138,78,0.6);
+    animation:pulse 1.8s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(29,138,78,0.5);}
+    70%{ box-shadow:0 0 0 8px rgba(29,138,78,0);}
+    100%{ box-shadow:0 0 0 0 rgba(29,138,78,0);}
+  }
+
+  .credentials{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:26px;
+    position:relative; z-index:1;
+  }
+  .cred-box{
+    background:var(--ice);
+    border:1px solid #D6E9F8;
+    border-radius:14px;
+    padding:16px 18px;
+  }
+  .cred-label{
+    font-size:12.5px;
+    font-family:'Prompt', sans-serif;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:6px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .cred-value{
+    font-family:'Prompt', sans-serif;
+    font-size:21px;
+    font-weight:600;
+    color:var(--navy-deep);
+    letter-spacing:0.02em;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:10px;
+  }
+  .copy-btn{
+    border:none; background:transparent; cursor:pointer;
+    color:var(--blue); opacity:0.55;
+    display:flex; align-items:center; justify-content:center;
+    padding:4px; border-radius:6px; transition:all .15s ease;
+    flex-shrink:0;
+  }
+  .copy-btn:hover{ opacity:1; background:rgba(22,87,168,0.08); }
+  .copy-btn svg{ width:17px; height:17px; }
+  .copy-btn.copied{ color:#1D8A4E; opacity:1; }
+
+  .join-btn{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    width:100%;
+    background:linear-gradient(90deg, var(--blue), var(--sky));
+    color:white;
+    font-family:'Prompt', sans-serif;
+    font-weight:600;
+    font-size:17px;
+    padding:17px 20px;
+    border:none;
+    border-radius:14px;
+    text-decoration:none;
+    box-shadow:0 14px 30px -8px rgba(22,87,168,0.55);
+    transition:transform .15s ease, box-shadow .15s ease;
+    position:relative; z-index:1;
+  }
+  .join-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 18px 34px -8px rgba(22,87,168,0.65);
+  }
+  .join-btn svg{ width:19px; height:19px; }
+
+  .join-note{
+    text-align:center;
+    font-size:13px;
+    color:#5B7396;
+    margin-top:14px;
+    position:relative; z-index:1;
+  }
+
+  /* ===== BREAKOUT NOTICE ===== */
+  .notice{
+    margin-top:22px;
+    display:flex; gap:14px; align-items:flex-start;
+    background:rgba(201,168,87,0.14);
+    border:1px solid rgba(201,168,87,0.4);
+    border-radius:16px;
+    padding:18px 20px;
+    color:var(--white);
+  }
+  .notice svg{ width:22px; height:22px; flex-shrink:0; margin-top:2px; color:var(--gold-soft); }
+  .notice p{ font-size:14.5px; line-height:1.75; color:var(--ink-soft); }
+  .notice b{ color:var(--gold-soft); font-weight:600; }
+
+  /* ===== SECTION HEADERS ===== */
+  .section{
+    margin-top:64px;
+  }
+  .section-head{
+    display:flex; align-items:center; gap:16px;
+    margin-bottom:22px;
+  }
+  .section-head .line{
+    flex:1; height:1px;
+    background:linear-gradient(90deg, rgba(255,255,255,0.25), transparent);
+  }
+  .section-tag{
+    font-family:'Prompt', sans-serif;
+    font-size:12.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold-soft);
+    background:rgba(201,168,87,0.15);
+    border:1px solid rgba(201,168,87,0.35);
+    padding:6px 14px;
+    border-radius:100px;
+    white-space:nowrap;
+  }
+  .section h3{
+    font-family:'Prompt', sans-serif;
+    font-size:23px;
+    font-weight:600;
+    color:var(--white);
+    margin-bottom:6px;
+  }
+  .section .desc{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    margin-bottom:22px;
+    line-height:1.8;
+  }
+  .section .desc b{ color:var(--sky-light); }
+
+  .media-frame{
+    background:var(--white);
+    border-radius:20px;
+    padding:14px;
+    box-shadow:0 26px 50px -20px rgba(3,15,40,0.5);
+    position:relative;
+  }
+  .media-frame::before{
+    content:"";
+    position:absolute; inset:0; border-radius:20px;
+    padding:1px;
+    background:linear-gradient(140deg, var(--gold), transparent 30%, var(--sky) 100%);
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
+    pointer-events:none;
+  }
+  .media-frame img{
+    width:100%;
+    display:block;
+    border-radius:12px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    margin-top:70px;
+    text-align:center;
+    padding-top:30px;
+    border-top:1px solid rgba(255,255,255,0.12);
+  }
+  footer .dept{
+    font-family:'Prompt', sans-serif;
+    font-size:15px;
+    font-weight:600;
+    color:var(--white);
+    margin-bottom:6px;
+  }
+  footer .fy{
+    font-size:13px;
+    color:var(--sky-light);
+    letter-spacing:0.04em;
+  }
+
+  @media (max-width:560px){
+    .credentials{ grid-template-columns:1fr; }
+    .join-card{ padding:28px 22px; }
+    .badge-row{ flex-direction:column; }
+    .badge-text{ text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wave-field">
+  <svg viewBox="0 0 1200 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="lg1" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#3E9EE0"/>
+        <stop offset="100%" stop-color="#C9A857"/>
+      </linearGradient>
+    </defs>
+    <path d="M-100,180 C 250,80 450,280 800,150 S 1300,60 1400,180" fill="none" stroke="url(#lg1)" stroke-width="1.2" opacity="0.5"/>
+    <path d="M-100,320 C 250,220 450,420 800,290 S 1300,200 1400,320" fill="none" stroke="url(#lg1)" stroke-width="1" opacity="0.35"/>
+    <path d="M-100,700 C 250,600 500,820 850,680 S 1300,600 1400,700" fill="none" stroke="url(#lg1)" stroke-width="1" opacity="0.3"/>
+  </svg>
+</div>
+
+<div class="container">
+
+  <header class="hero">
+    <div class="badge-row">
+      <div class="emblem"></div>
+      <div class="badge-text">
+        โรงพยาบาลลำปลายมาศ
+        <strong>Lamplaimat Hospital</strong>
+      </div>
+    </div>
+
+    <div class="eyebrow">Conference · ห้องประชุมออนไลน์</div>
+    <h1>การประเมินผลการปฏิบัติราชการ<br>ด้าน<span class="accent">สาธารณสุข</span></h1>
+    <p class="subtitle">
+      สำนักงานสาธารณสุขจังหวัดบุรีรัมย์ ประจำปีงบประมาณ พ.ศ. <b>2569</b><br>
+      ประชุมผ่านระบบ <b>ZOOM Online</b>
+    </p>
+
+    <div class="meta-row">
+      <div class="meta-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+        ปีงบประมาณ 2569
+      </div>
+      <div class="meta-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M17 2v6M7 2v6M2 12h20"/></svg>
+        มีการใช้ห้องย่อย (Breakout Room)
+      </div>
+    </div>
+  </header>
+
+  <div class="join-card">
+    <div class="join-head">
+      <h2><img src="https://lh5.googleusercontent.com/d/1T2fYx29DsAPc8ruQ9yS796epbhmqL6jb" width="40" height="40" loading="lazy"> เข้าร่วมการประชุม</h2>
+      <span class="live-dot"><span> </span>Zoom Online</span>
+    </div>
+
+    <div class="credentials">
+      <div class="cred-box">
+        <div class="cred-label">Meeting ID :</div>
+        <div class="cred-value">
+          <span> ( แจ้งก่อนวันประชุม ) </span>
+          <button class="copy-btn" data-copy="9740296315 0" aria-label="คัดลอก Meeting ID">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="cred-box">
+        <div class="cred-label">Meeting Passcode : </div>
+        <div class="cred-value">
+          <span>   </span>
+          <button class="copy-btn" data-copy="eva69test" aria-label="คัดลอก Passcode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <a class="join-btn" href="https://zoom.us/j/97402963150?pwd=eva69test" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v3.4l5.2-3A1 1 0 0 1 22 7.3v9.4a1 1 0 0 1-1.5.87L15 14.6V18a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6z"/></svg>
+      Join Meeting
+    </a>
+    <p class="join-note">กดปุ่มเพื่อเข้าห้องประชุมโดยตรง หรือกรอก Meeting ID และ Passcode ด้วยตนเองในแอป Zoom</p>
+  </div>
+
+  <div class="notice">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+    <p>การประชุมครั้งนี้จะมีการใช้งาน <b>ห้องย่อย (Breakout Room)</b> กรุณาศึกษาขั้นตอนการเข้าห้องย่อยล่วงหน้าตามคำแนะนำด้านล่าง</p>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-tag">Schedule</span>
+      <div class="line"></div>
+    </div>
+    <h3>ตารางห้องประชุมประเมินผลการปฎิบัติราชการ</h3>
+    <p class="desc">รายละเอียด<b>กำหนดการ</b>และช่วงเวลาในการประชุมตลอดทั้งวัน</p>
+    <div class="media-frame">
+      <img src="https://lh5.googleusercontent.com/d/1mRqg2s7W92PZeGLT62zXj3MvDaEbPx1a" alt="ตารางกำหนดการประชุม" loading="lazy">
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <span class="section-tag">Breakout Room</span>
+      <div class="line"></div>
+    </div>
+    <h3>วิธีการเข้าห้องย่อย</h3>
+    <p class="desc">ช่วงเวลาเข้าห้องย่อย <b>08.30 – 12.00 น.</b> โปรดปฏิบัติตามขั้นตอนดังภาพ</p>
+    <div class="media-frame">
+      <img src="https://lh5.googleusercontent.com/d/1Kg88QtL4-ZdiMCDbQQRL76zLDmD764iW" alt="วิธีการเข้าห้องย่อย" loading="lazy">
+    </div>
+  </div>
+
+  <footer>
+    <div class="dept">การประเมินผลการปฏิบัติราชการด้านสาธารณสุข ประจำปีงบประมาณ พ.ศ. 2569</div>
+    <div class="fy">งานเทคโนโลยีสารสนเทศ · โรงพยาบาลลำปลายมาศ</div>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      const text = btn.getAttribute('data-copy');
+      try{
+        await navigator.clipboard.writeText(text);
+        btn.classList.add('copied');
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>';
+        setTimeout(()=>{
+          btn.classList.remove('copied');
+          btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>';
+        },1600);
+      }catch(e){}
+    });
+  });
+</script>
+
+</body>
+</html>
